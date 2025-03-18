@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 252 88% 98%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 83% 58%;
+    --radius: 1.5rem;
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 263 83% 58%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263 83% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground min-h-screen;
+    background: linear-gradient(135deg, #f5e6ff 30%, #ffe8f5 70%, #e6f0ff 100%);
+    /* background: linear-gradient(135deg, #7a5fff 30%, #b86dd5 70%, #e389a2 100%); */
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply relative overflow-hidden rounded-[24px] border bg-white/70 backdrop-blur-[12px];
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+  }
+
+  .glass-card:hover {
+    @apply bg-white/40;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+  }
+
+  .glass-panel {
+    @apply relative overflow-hidden rounded-[24px] border bg-white/70 backdrop-blur-[15px];
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 40px -8px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0.5px rgba(200, 200, 200, 0.6);
+  }
+
+  .glass-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+  }
+
+  .glass-button {
+    @apply relative overflow-hidden rounded-[12px] border bg-primary/90 backdrop-blur-[12px] text-white;
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px -4px rgba(139, 92, 246, 0.2),
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .glass-button:hover {
+    @apply bg-primary;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px -8px rgba(139, 92, 246, 0.3),
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.12) 0%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+    pointer-events: none;
+  }
+}
+
+/* Progress bar styling */
+.progress {
+  @apply bg-primary/10 h-2;
+}
+
+.progress > div {
+  @apply bg-primary transition-all duration-300;
+}
