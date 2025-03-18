@@ -1,20 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { 
-    unoptimized: true,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
+  images: {
+    domains: ['images.unsplash.com'],
   },
-  // Required for static export
-  trailingSlash: true,
+  // Optimize chunk loading
+  optimizeFonts: true,
+  swcMinify: true,
 };
 
 module.exports = nextConfig;

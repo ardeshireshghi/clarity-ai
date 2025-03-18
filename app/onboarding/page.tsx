@@ -10,8 +10,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
-import { ArrowLeft, ArrowRight, Check, LogOut } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
 import Link from 'next/link';
 
 const steps = [
@@ -26,13 +25,12 @@ const steps = [
 export default function Onboarding() {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedRole, setSelectedRole] = useState('');
-  const router = useRouter();
 
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   const handleNext = () => {
     if (currentStep === steps.length - 1) {
-      router.push('/dashboard');
+      window.location.href = '/dashboard/';
     } else {
       setCurrentStep((prev) => prev + 1);
     }
@@ -49,9 +47,9 @@ export default function Onboarding() {
         <div className="mx-4 mt-4">
           <div className="glass-panel">
             <div className="flex items-center justify-between h-16 px-6">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
+              <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                 ClarityAI
-              </h1>
+              </Link>
             </div>
           </div>
         </div>
@@ -67,20 +65,15 @@ export default function Onboarding() {
 
           <div className="glass-panel p-6">
             {currentStep === 0 && <WelcomeStep />}
-
             {currentStep === 1 && (
               <RoleSelectionStep
                 selectedRole={selectedRole}
                 onRoleSelect={setSelectedRole}
               />
             )}
-
             {currentStep === 2 && <ToolIntegrationsStep />}
-
             {currentStep === 3 && <CustomizationStep />}
-
             {currentStep === 4 && <DashboardSetupStep />}
-
             {currentStep === 5 && <PreviewStep />}
 
             <div className="flex justify-between mt-6">
@@ -92,18 +85,22 @@ export default function Onboarding() {
               >
                 <ArrowLeft className="mr-2 h-4 w-4" /> Back
               </Button>
-              <Button
-                onClick={handleNext}
-                className="bg-primary/90 hover:bg-primary text-white"
-              >
-                {currentStep === steps.length - 1 ? (
-                  'Go to Dashboard'
-                ) : (
-                  <>
-                    Next <ArrowRight className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
+              {currentStep === steps.length - 1 ? (
+                <Link href="/dashboard/" passHref>
+                  <Button
+                    className="bg-primary/90 hover:bg-primary text-white"
+                  >
+                    Go to Dashboard
+                  </Button>
+                </Link>
+              ) : (
+                <Button
+                  onClick={handleNext}
+                  className="bg-primary/90 hover:bg-primary text-white"
+                >
+                  Next <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              )}
             </div>
           </div>
         </div>
