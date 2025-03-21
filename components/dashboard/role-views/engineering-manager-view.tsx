@@ -16,7 +16,7 @@ export function EngineeringManagerView() {
   return (
     <>
       {/* Overview Panel */}
-      <div className="glass-panel p-6 mb-6">
+      <div className="minimal-panel p-6">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold mb-2">Engineering Health Overview</h2>
@@ -28,21 +28,26 @@ export function EngineeringManagerView() {
           </div>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-6">
-          <div>
+        <div className="grid md:grid-cols-4 gap-6">
+          <div className="dashboard-stat-card">
             <h3 className="font-medium mb-2">Code Review Progress</h3>
             <Progress value={65} className="mb-2" />
             <p className="text-sm text-muted-foreground">65% Complete</p>
           </div>
-          <div>
+          <div className="dashboard-stat-card">
             <h3 className="font-medium mb-2">Technical Debt</h3>
             <p className="text-2xl font-bold">24%</p>
             <p className="text-sm text-muted-foreground">+5% from last sprint</p>
           </div>
-          <div>
+          <div className="dashboard-stat-card">
             <h3 className="font-medium mb-2">Team Velocity</h3>
             <p className="text-2xl font-bold">42</p>
             <p className="text-sm text-destructive">-8 below target</p>
+          </div>
+          <div className="dashboard-stat-card">
+            <h3 className="font-medium mb-2">Bug Rate</h3>
+            <p className="text-2xl font-bold">2.5</p>
+            <p className="text-sm text-muted-foreground">per sprint</p>
           </div>
         </div>
       </div>
@@ -51,7 +56,7 @@ export function EngineeringManagerView() {
       <div className="grid md:grid-cols-3 gap-6">
         {/* Scope Creep Monitoring */}
         <div 
-          className="glass-card p-6 transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          className="dashboard-card cursor-pointer"
           onClick={() => setSelectedInsight({
             type: "scope",
             title: "Scope Creep Analysis",
@@ -72,7 +77,7 @@ export function EngineeringManagerView() {
 
         {/* Code Review Bottlenecks */}
         <div 
-          className="glass-card p-6 transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          className="dashboard-card cursor-pointer"
           onClick={() => setSelectedInsight({
             type: "bottleneck",
             title: "Code Review Bottlenecks",
@@ -93,7 +98,7 @@ export function EngineeringManagerView() {
 
         {/* Team Response Time */}
         <div 
-          className="glass-card p-6 transition-all duration-300 hover:scale-[1.02] cursor-pointer"
+          className="dashboard-card cursor-pointer"
           onClick={() => setSelectedInsight({
             type: "response",
             title: "Team Response Analysis",

@@ -4,7 +4,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['images.unsplash.com'],
+    domains: [
+      'images.unsplash.com',
+      'www.google.com',
+      'www.okta.com'
+    ],
     unoptimized: process.env.NETLIFY === 'true'
   },
   // Optimize chunk loading

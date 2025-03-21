@@ -7,13 +7,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             ClarityAI
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto glass-card bg-white/20 p-6 rounded-2xl">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
             Eliminate project fragmentation with AI-powered insights
           </p>
         </div>
@@ -37,8 +37,8 @@ export default function Home() {
         </div>
 
         <div className="text-center">
-          <Link href="/onboarding">
-            <Button size="lg" className="glass-button px-8">
+          <Link href="/auth/login">
+            <Button size="lg" className="px-8">
               Get Started <ArrowRight className="ml-2" />
             </Button>
           </Link>
@@ -58,7 +58,7 @@ function FeatureCard({
   description: string;
 }) {
   return (
-    <Card className="glass-card p-6 hover:shadow-lg transition-shadow bg-white/20">
+    <Card className="minimal-card hover:shadow-md transition-shadow">
       <div className="mb-4 text-primary">{icon}</div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>
       <p className="text-muted-foreground">{description}</p>
